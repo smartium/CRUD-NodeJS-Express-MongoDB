@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 
 const app = express();
+const port = process.env.PORT || 3000
 
 const atlas = 'mongodb://dbuser:dev1357@cluster0-shard-00-00.ftckb.mongodb.net:27017,cluster0-shard-00-01.ftckb.mongodb.net:27017,cluster0-shard-00-02.ftckb.mongodb.net:27017/quotes-app?ssl=true&replicaSet=atlas-13518p-shard-0&authSource=admin&retryWrites=true&w=majority'
 const docker = 'mongodb://localhost:27117'
@@ -19,8 +20,8 @@ MongoClient.connect(atlas, { useUnifiedTopology: true })
 		app.use(compression())
 		app.use(bodyParser.urlencoded({ extended: true }))
 
-		app.listen(3000, () => {
-			console.log(`Server started @ port 3000 in ${app.get('env').toUpperCase()} mode`)
+		app.listen(port, () => {
+			console.log(`Server started @ port ${port} in ${app.get('env').toUpperCase()} mode`)
 		})
 
 		app.get('/', (req, res) => {
