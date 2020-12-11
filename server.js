@@ -6,14 +6,7 @@ const MongoClient = require('mongodb').MongoClient
 
 const app = express();
 const PORT = process.env.PORT || 3000
-var MONGO_URL = null
-if (app.get('env') == 'development') {
-	MONGO_URL = 'mongodb://localhost:27117'
-}
-else {
-	MONGO_URL = 'mongodb://dbuser:dev1357@cluster0-shard-00-00.ftckb.mongodb.net:27017,cluster0-shard-00-01.ftckb.mongodb.net:27017,cluster0-shard-00-02.ftckb.mongodb.net:27017/quotes-app?ssl=true&replicaSet=atlas-13518p-shard-0&authSource=admin&retryWrites=true&w=majority'
-}
-
+const MONGO_URL = app.get('env') == 'development' ? 'mongodb://localhost:27117' : process.env.MONGO_URL
 
 // PROMISES
 MongoClient.connect(MONGO_URL, { useUnifiedTopology: true })
