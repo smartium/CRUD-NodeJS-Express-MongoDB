@@ -10,7 +10,7 @@ const docker = 'mongodb://localhost:27117'
 
 
 // PROMISES
-MongoClient.connect(docker, { useUnifiedTopology: true })
+MongoClient.connect(atlas, { useUnifiedTopology: true })
 	.then(client => {
 		console.log(`MongoDB connected @ ${client.s.url}`);
 		const db = client.db('quotes-app')
