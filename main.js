@@ -1,3 +1,5 @@
+// https://devcenter.heroku.com/articles/getting-started-with-nodejs#push-local-changes
+
 const compression = require('compression')
 const express = require('express')
 const path = require('path')
@@ -24,7 +26,7 @@ MongoClient.connect(MONGO_URL, { useUnifiedTopology: true })
 		})
 
 		app.get('/', (req, res) => {
-			res.sendFile(__dirname + '/public/index.html')
+			res.sendFile(__dirname + '/client/main.html')
 		})
 
 		app.post('/quotes', (req, res) => {
@@ -42,6 +44,7 @@ MongoClient.connect(MONGO_URL, { useUnifiedTopology: true })
 	})
 	.catch(error => console.error(error))
 
+	// GET ENVIRONMENT MODE
 	app.get('/mode', (req, res) => {
-		res.send(app.get('env'))
+		res.send(`<h1>${app.get('env').toUpperCase()}</h1>`)
 	})
