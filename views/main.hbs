@@ -1,0 +1,12 @@
+<form action="/quotes" method="POST">
+	<input type="text" placeholder="name" name="name" value="Baby Yoda">
+	<input type="text" placeholder="quote" name="quote"
+		value="Amet non ut ullamco ullamco laboris mollit duis eu. Nulla Lorem ad aliqua id exercitation do consectetur eiusmod in ut sunt in ut. Incididunt dolore elit aute et adipisicing minim consequat officia ipsum ex anim anim velit. Dolor sunt magna fugiat consequat id fugiat reprehenderit laborum laboris nulla magna consectetur esse. Consectetur id excepteur ipsum officia dolore commodo irure amet dolor deserunt sit officia sint.">
+	<button type="submit">Submit</button>
+</form>
+
+<ul>
+	{{#each quotes}}
+	<li>{{name}} <button type="button" class="update" onclick="sayAny()">UPDATE</button> {{createdAt}}</li>
+	{{/each}}
+</ul>
