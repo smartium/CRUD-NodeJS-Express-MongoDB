@@ -10,7 +10,8 @@ const MongoClient = require('mongodb').MongoClient
 const app = express();
 
 const PORT = process.env.PORT || 3000
-const MONGO_URL = app.get('env') == 'development' ? 'mongodb://localhost:27117' : process.env.MONGO_URL
+// const MONGO_URL = app.get('env') == 'development' ? 'mongodb://localhost:27117' : process.env.MONGO_URL
+const MONGO_URL = app.get('env') == 'development' ? 'mongodb://dbuser:dev1357@cluster0-shard-00-00.ftckb.mongodb.net:27017,cluster0-shard-00-01.ftckb.mongodb.net:27017,cluster0-shard-00-02.ftckb.mongodb.net:27017/quotes-app?ssl=true&replicaSet=atlas-13518p-shard-0&authSource=admin&retryWrites=true&w=majority' : process.env.MONGO_URL
 
 //Sets our app to use the handlebars engine
 app.set('view engine', 'hbs')
